@@ -39,16 +39,6 @@ module.exports = {
       "error",
       { varsIgnorePattern: "^_", argsIgnorePattern: "^_" },
     ],
-    "@typescript-eslint/naming-convention": [
-      "error",
-      {
-        selector: "variable",
-        types: ["boolean"],
-        format: ["PascalCase"],
-        prefix: ["no", "is", "has", "should"],
-        filter: { regex: "^_", match: false },
-      },
-    ],
     "jsx-a11y/no-autofocus": "off",
     "jsx-a11y/anchor-is-valid": [
       "error",
@@ -61,17 +51,9 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["src/pages/**/*.tsx", "src/pages/api/**/*.ts"],
+      files: ["src/**/*.tsx", "src/api/**/*.ts"],
       rules: {
         "import/no-default-export": "off",
-        "@typescript-eslint/naming-convention": [
-          {
-            selector: "variable",
-            types: ["boolean"],
-            format: ["PascalCase"],
-            prefix: ["is", "has", "should"],
-          },
-        ],
       },
     },
   ],

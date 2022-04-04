@@ -1,20 +1,17 @@
 import "@/styles/globals.css";
 
+import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
-import { ThemeProvider } from "next-themes";
 import { memo } from "react";
-import { Toaster } from "react-hot-toast";
 
-import { useAddClassToBodyElem } from "./_app/useAddClassToBodyElem";
-import { useSessionRouter } from "./_app/useSessionRouter";
+import { useSessionRouter } from "@/hooks/useSessionRouter";
 
-const App = (props: AppProps) => {
-  useSessionRouter(props.router.asPath);
-  useAddClassToBodyElem("dark:bg-zinc-800 dark:text-white");
+const App: NextPage<AppProps> = ({ pageProps, router, Component }) => {
+  useSessionRouter(router.asPath);
 
   return (
-    <ThemeProvider attribute="class">
+    <>
       <DefaultSeo
       // additionalLinkTags={[
       //   {
@@ -56,13 +53,8 @@ const App = (props: AppProps) => {
       //   ],
       // }}
       />
-      <props.Component {...props.pageProps} />
-      <Toaster
-        toastOptions={{
-          className: "!rounded-full !py-1 !px-2.5 !text-sm font-bold",
-        }}
-      />
-    </ThemeProvider>
+      <Component {...pageProps} />
+    </>
   );
 };
 

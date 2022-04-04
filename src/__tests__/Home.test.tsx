@@ -2,7 +2,7 @@ import "@testing-library/jest-dom/extend-expect";
 
 import { render, screen } from "@testing-library/react";
 
-import Root from "@/pages/root/index.page";
+import Root from "@/pages/root";
 
 it("Should render hello text", () => {
   render(<Root />);
